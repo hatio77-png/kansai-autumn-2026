@@ -56,7 +56,7 @@
 @media(min-width:700px){.event .daily-spot-photo{width:156px}.event .daily-spot-photo img{height:112px}}
 </style><style>
 .hotel-address-card{margin:14px 0;padding:13px 15px;border:1px solid #d9dfd0;background:#f8faf4;border-radius:14px}.hotel-address-label{font-weight:800;color:#526749;font-size:13px}.hotel-address-text{font-size:14px;line-height:1.6;margin:5px 0 10px;overflow-wrap:anywhere}.hotel-copy{background:#526749;color:#fff;border:0;border-radius:8px;padding:9px 14px;font:inherit;cursor:pointer;font-weight:700}.quickview{background:#f8f3eb;border:1px solid #ead8c1;padding:14px;border-radius:15px;margin:14px 0}.quickview>strong{color:#79503b}.quickitems{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.quickitems span{font-size:12px;padding:6px 9px;border-radius:8px;background:white;color:#564c42;border:1px solid #ece1d0}.itinerary-detail{margin:15px 0;border:1px solid #e3e4dc;border-radius:15px;padding:12px 15px}.itinerary-detail>summary{cursor:pointer;color:#506a52;font-weight:800;font-size:14px;padding:4px}.key-event{background:#fff8e9;border-left:4px solid #db8241;border-radius:9px;padding:10px 12px 15px!important;margin-left:-12px}.key-event .eventtime{font-size:15px;color:#a84c27}.time-alert{margin-left:9px;display:inline-block;border-radius:20px;padding:2px 8px;background:#f9dfc5;color:#94482e;font-size:11px;font-weight:800}
-</style></head>
+nav a.active, nav a[aria-current="location"]{background:#405b43!important;color:#ffffff!important;border:2px solid #405b43!important;box-shadow:0 4px 14px rgba(47,74,49,.23)!important;font-weight:850!important}nav a.active:hover{background:#344a36!important}</style></head>
 <body>
 <header><div class="wrap headinner"><a class="brand" href="#home">關西 <b>秋楓</b> · 2026</a><nav aria-label="主要導覽"><a href="#flights">航班</a><a href="#clock">雙時區</a><a href="#pdf-tips">小知識・禮儀・提醒</a><a href="#itinerary">每日行程</a><a href="#yen-tool">日幣計算機</a><a href="#luggage">行李清單</a><a href="#travelhelp">交通攻略</a><a href="#taxrefund">退稅新制</a><a href="#checklist">待辦清單</a><a href="#hotels">住宿</a><a href="#photos">旅途照片</a></nav></div></header>
 <main>
@@ -280,28 +280,35 @@ function drawDay(){const usedPhotos=new Set();const d=itinerary[active],isAlt=ac
 function selectDay(n){active=n;drawTabs();drawDay();setupNavActive();$('daycontent').classList.remove('animate');void $('daycontent').offsetWidth;$('daycontent').classList.add('animate')}
 
 function setupNavActive(){
-  const navLinks=[...document.querySelectorAll('header nav a')];
-  const idToLink=new Map(navLinks.map(a=>[(a.getAttribute('href')||'').replace('#',''),a]));
-  function setActive(id){
-    navLinks.forEach(a=>a.classList.toggle('active', a===idToLink.get(id)));
+  const navLinks=[...document.querySelectorAll('header nav a[href^="#"]')];
+  const sections=navLinks.map(a=>({link:a,section:document.getElementById(a.getAttribute('href').slice(1))})).filter(x=>x.section);
+  let ticking=false;
+  function updateActive(){
+    ticking=false;
+    const threshold=window.scrollY+Math.max(150,window.innerHeight*.30);
+    let best=null;
+    for(const item of sections){
+      if(item.section.getBoundingClientRect().top+window.scrollY<=threshold){
+        if(!best || item.section.getBoundingClientRect().top+window.scrollY>best.section.getBoundingClientRect().top+window.scrollY)best=item;
+      }
+    }
+    if(!best)best=sections[0];
+    sections.forEach(item=>{
+      const active=item===best;
+      item.link.classList.toggle('active',active);
+      if(active)item.link.setAttribute('aria-current','location');
+      else item.link.removeAttribute('aria-current');
+    });
   }
-  navLinks.forEach(a=>a.addEventListener('click',()=>{
-    const id=(a.getAttribute('href')||'').replace('#','');
-    setActive(id);
+  window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(updateActive)}},{passive:true});
+  window.addEventListener('hashchange',updateActive);
+  window.addEventListener('resize',updateActive);
+  navLinks.forEach(link=>link.addEventListener('click',()=>{
+    navLinks.forEach(a=>a.classList.toggle('active',a===link));
+    navLinks.forEach(a=>a.removeAttribute('aria-current'));
+    link.setAttribute('aria-current','location');
   }));
-  const sections=[...document.querySelectorAll('section[id], main[id]')].filter(sec=>idToLink.has(sec.id));
-  if('IntersectionObserver' in window && sections.length){
-    const visible=new Map();
-    const io=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>visible.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0));
-      let bestId='';
-      let bestRatio=0;
-      visible.forEach((ratio,id)=>{ if(ratio>bestRatio){ bestRatio=ratio; bestId=id; } });
-      if(bestId) setActive(bestId);
-    }, {rootMargin:'-35% 0px -55% 0px', threshold:[0.05,0.2,0.4,0.6]});
-    sections.forEach(sec=>io.observe(sec));
-  }
-  setActive('home');
+  updateActive();
 }
 
 function editEvent(i){const isB=active===4&&choice1128===2;const e=(isB?current1128B():currentEvents(active)).map(x=>[...x]);const old=e[i],time=prompt('修改時間／時段：',old[0]);if(time===null)return;const name=prompt('修改行程名稱：',old[1]);if(name===null)return;const desc=prompt('修改備註：',old[2]);if(desc===null)return;if(!name.trim())return alert('行程名稱不可空白');e[i]=[time.trim(),name.trim(),desc.trim(),old[3],old[4]];if(isB){edits1128B=e;safeWrite('kansai2026-1128-B-edits-v3',e)}else if(active===4){edits1128A=e;safeWrite('kansai2026-1128-A-edits-v3',e)}else{edits[active]=e;safeWrite('kansai2026-edits-v2',edits)}drawDay()}
@@ -318,7 +325,7 @@ $('luggagereset').onclick=()=>{if(confirm('確定取消所有行李勾選？')){
 $('luggageprint').onclick=()=>window.print();
 $('sunsets').innerHTML=[['11/24（二）','16:49','京都近似'],['11/25（三）','16:49','京都近似'],['11/26（四）','16:48','大阪'],['11/27（五）','16:48','大阪'],['11/28（六）','16:48','大阪'],['11/29（日）','16:48','大阪']].map(x=>`<div class="fareline"><span>${x[0]} <small>${x[2]}</small></span><b>${x[1]}</b></div>`).join('');
 renderLuggage();
-drawTabs();drawDay();drawTodo();tick();setInterval(tick,1000);loadWeather('京都');loadWeather('大阪');
+drawTabs();drawDay();drawTodo();setupNavActive();tick();setInterval(tick,1000);loadWeather('京都');loadWeather('大阪');
 })();
 </script>
 <script>
