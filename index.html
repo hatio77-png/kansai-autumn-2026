@@ -27,6 +27,25 @@
 .daily-souvenir .cards2{margin-top:13px}
 .daily-souvenir article.card{padding:16px}
 .daily-souvenir article.card h3{font-size:1.02rem}
+
+/* 購物清單：適合手機、長輩易讀 */
+.shopping-areas{display:grid;gap:22px;margin-top:16px}
+.shopping-area{background:#fff;border:1px solid #e5d9c9;border-radius:22px;padding:18px}
+.shopping-area h3{font-size:21px;margin:0 0 12px;color:#604934}
+.shopping-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.shopping-item{position:relative;display:flex;gap:14px;align-items:flex-start;min-height:165px;padding:14px;background:#fffaf3;border:2px solid #e9ddcd;border-radius:17px;cursor:pointer;transition:background .15s,border-color .15s}
+.shopping-item:has(input:checked){background:#eaf1e7;border-color:#6c8567}
+.shopping-item input{flex:0 0 auto;width:25px;height:25px;margin:8px 0 0;accent-color:#466b4d}
+.shopping-item img{width:116px;height:118px;object-fit:contain;border-radius:10px;background:white;border:1px solid #eee5da;padding:4px}
+.shopping-item .shopping-copy{min-width:0;flex:1}
+.shopping-item .shopping-name{display:block;font-size:18px;font-weight:850;line-height:1.45;color:#342f29}
+.shopping-item .shopping-jp{display:block;font-size:13px;color:#615a50;margin-top:5px}
+.shopping-item .shopping-note{display:block;font-size:13px;color:#896143;font-weight:700;margin-top:5px}
+.shopping-item:has(input:checked) .shopping-name{text-decoration:line-through;text-decoration-color:#57765d}
+.shopping-photo-fallback{display:none;align-items:center;justify-content:center;text-align:center;width:116px;height:118px;background:#f1eee8;color:#625c52;border-radius:10px;font-size:12px;padding:10px}
+.shopping-purchase-status{color:#52684d;font-weight:750;font-size:14px;margin:10px 0 0}
+.shopping-help{font-size:13px;color:#766b60;margin:10px 0}
+@media(max-width:730px){.shopping-items{grid-template-columns:1fr}.shopping-item{gap:11px;min-height:145px;padding:11px}.shopping-item img,.shopping-photo-fallback{width:103px;height:111px}.shopping-item .shopping-name{font-size:17px}.shopping-area{padding:14px}}
 </style>
 <style id="maplink-styles">.mapactions{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.mapaction{display:inline-flex;align-items:center;text-decoration:none;border:1px solid #dfcdb6;border-radius:999px;background:#fff7ec;color:#88573c;padding:6px 11px;font-size:12px;font-weight:700;min-height:32px}.mapaction:hover,.mapaction:focus-visible{background:#f8e6d0}.routeaction{border-color:#d5dfd1;background:#eff5ed;color:#52674e}.routeaction:hover{background:#e3eddf}@media(max-width:760px){.mapaction{font-size:12px;padding:7px 10px}}</style><style>
 .gion-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
@@ -58,7 +77,7 @@
 .hotel-address-card{margin:14px 0;padding:13px 15px;border:1px solid #d9dfd0;background:#f8faf4;border-radius:14px}.hotel-address-label{font-weight:800;color:#526749;font-size:13px}.hotel-address-text{font-size:14px;line-height:1.6;margin:5px 0 10px;overflow-wrap:anywhere}.hotel-copy{background:#526749;color:#fff;border:0;border-radius:8px;padding:9px 14px;font:inherit;cursor:pointer;font-weight:700}.quickview{background:#f8f3eb;border:1px solid #ead8c1;padding:14px;border-radius:15px;margin:14px 0}.quickview>strong{color:#79503b}.quickitems{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.quickitems span{font-size:12px;padding:6px 9px;border-radius:8px;background:white;color:#564c42;border:1px solid #ece1d0}.itinerary-detail{margin:15px 0;border:1px solid #e3e4dc;border-radius:15px;padding:12px 15px}.itinerary-detail>summary{cursor:pointer;color:#506a52;font-weight:800;font-size:14px;padding:4px}.key-event{background:#fff8e9;border-left:4px solid #db8241;border-radius:9px;padding:10px 12px 15px!important;margin-left:-12px}.key-event .eventtime{font-size:15px;color:#a84c27}.time-alert{margin-left:9px;display:inline-block;border-radius:20px;padding:2px 8px;background:#f9dfc5;color:#94482e;font-size:11px;font-weight:800}
 nav a.active, nav a[aria-current="location"]{background:#405b43!important;color:#ffffff!important;border:2px solid #405b43!important;box-shadow:0 4px 14px rgba(47,74,49,.23)!important;font-weight:850!important}nav a.active:hover{background:#344a36!important}.hotel-events{margin-top:16px;padding:15px;background:#fff8ed;border:1px solid #eed6b8;border-radius:14px;font-size:13px;line-height:1.75}.hotel-events>strong{display:block;margin-bottom:9px;color:#724a31;font-size:14px}.hotel-event{display:grid;grid-template-columns:86px 1fr;gap:9px;padding:7px 0;border-bottom:1px dashed #e9d6bc}.hotel-event b{color:#704e3c}.hotel-event span{color:#3d443e}.pickup-banner{margin-top:17px;background:#e4eee4;border:2px solid #527052;border-radius:18px;padding:19px 20px;color:#274531;box-shadow:0 8px 22px rgba(56,80,51,.11)}.pickup-banner>strong{display:block;font-size:20px;margin-bottom:10px;line-height:1.4}.pickup-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pickup-pair span{display:block;background:#fff;border:1px solid #c6d8c5;border-radius:12px;padding:11px 13px;font-size:14px}.pickup-pair b{color:#254e30}.pickup-banner small{display:block;margin-top:12px;font-size:12px;line-height:1.7}@media(max-width:760px){.pickup-pair{grid-template-columns:1fr}.pickup-banner{padding:15px}.pickup-banner>strong{font-size:18px}}</style></head>
 <body>
-<header><div class="wrap headinner"><a class="brand" href="#home">關西 <b>秋楓</b> · 2026</a><nav aria-label="主要導覽"><a href="#flights">航班</a><a href="#clock">雙時區</a><a href="#pdf-tips">小知識・禮儀・提醒</a><a href="#itinerary">每日行程</a><a href="#yen-tool">日幣計算機</a><a href="#luggage">行李清單</a><a href="#travelhelp">交通攻略</a><a href="#taxrefund">退稅新制</a><a href="#checklist">待辦清單</a><a href="#hotels">住宿</a><a href="#photos">旅途照片</a></nav></div></header>
+<header><div class="wrap headinner"><a class="brand" href="#home">關西 <b>秋楓</b> · 2026</a><nav aria-label="主要導覽"><a href="#flights">航班</a><a href="#clock">雙時區</a><a href="#pdf-tips">小知識・禮儀・提醒</a><a href="#itinerary">每日行程</a><a href="#yen-tool">日幣計算機</a><a href="#luggage">行李清單</a><a href="#shopping">購物清單</a><a href="#travelhelp">交通攻略</a><a href="#taxrefund">退稅新制</a><a href="#checklist">待辦清單</a><a href="#hotels">住宿</a><a href="#photos">旅途照片</a></nav></div></header>
 <main>
 <section class="hero" id="home"><div class="wrap herogrid"><div><div class="eyebrow">AUTUMN TRAVEL BOOK · JAPAN</div><h1>關西<span class="leaf">秋楓</span></h1><span class="stamp">京都 · 大阪</span><p>山色染紅的古都、柿子與蜜柑上架的超市、<br/>還有搭著小火車慢慢經過的嵐山秋天。</p><div class="dates">2026.11.24（二）— 11.29（日）｜6 天 5 夜</div><div class="countrow"><span class="countdesc" id="countlabel">距離出發還有</span><div class="countbox"><strong id="cdays">--</strong><span>天</span></div><div class="countbox"><strong id="chours">--</strong><span>時</span></div><div class="countbox"><strong id="cmins">--</strong><span>分</span></div><div class="countbox"><strong id="csecs">--</strong><span>秒</span></div></div></div><div class="heroart"><svg aria-label="秋楓、雪山、寺塔與嵐山小火車的日系插畫" role="img" viewbox="0 0 520 410" xmlns="http://www.w3.org/2000/svg"><circle cx="356" cy="156" fill="#f4ded1" r="104"></circle><path d="M15 285 114 142l63 79 82-125 96 134 62-93 92 148Z" fill="#a8bba8"></path><path d="m62 218 52-76 31 40-19-9-12 15-16-8Z M206 177l53-81 41 57-27-12-18 14-19-8Z M378 195l39-58 41 60-29-21-14 10-14-7Z" fill="#fff9ed"></path><path d="M0 289Q130 248 252 295T520 284V410H0Z" fill="#d5dfcf"></path><path d="M0 335Q136 302 250 338T520 322V410H0Z" fill="#bdd0b8"></path><path d="M291 284h98v-15h-98z" fill="#7c9082"></path><path d="M310 266h60v-19h-60z" fill="#b46c5e"></path><path d="M324 243h33v-15h-33z" fill="#617d71"></path><path d="M301 261h78l-13-11h-52z" fill="#5b6d63"></path><path d="M333 225h16v-10h-16z" fill="#bc705b"></path><path d="M295 281h91" stroke="#fff" stroke-width="3"></path><path d="M19 335Q155 294 284 345T513 330" fill="none" stroke="#9a8370" stroke-width="6"></path><g transform="translate(150 302) rotate(-6)"><rect fill="#b95e4c" height="42" rx="10" width="118" x="0" y="0"></rect><rect fill="#e5ecdc" height="21" rx="2" width="28" x="8" y="7"></rect><rect fill="#e5ecdc" height="21" rx="2" width="28" x="44" y="7"></rect><rect fill="#e5ecdc" height="21" rx="2" width="28" x="80" y="7"></rect><path d="M0 32h118" stroke="#f6d6b7" stroke-width="5"></path><circle cx="23" cy="45" fill="#3c4943" r="7"></circle><circle cx="94" cy="45" fill="#3c4943" r="7"></circle></g><path d="M73 364Q87 279 69 181" fill="none" stroke="#755b4d" stroke-linecap="round" stroke-width="10"></path><path d="M72 234 31 203M69 216l45-42M69 276l-43-22" stroke="#755b4d" stroke-linecap="round" stroke-width="6"></path><g fill="#c7664d"><circle cx="30" cy="190" r="29"></circle><circle cx="64" cy="161" r="29"></circle><circle cx="98" cy="183" r="31"></circle><circle cx="35" cy="236" r="27"></circle><circle cx="97" cy="233" r="26"></circle></g><g fill="#e3a55b"><circle cx="18" cy="218" r="15"></circle><circle cx="87" cy="157" r="14"></circle><circle cx="115" cy="211" r="18"></circle><circle cx="51" cy="260" r="14"></circle></g><g fill="#fffaf4" opacity=".92"><circle cx="203" cy="80" r="3"></circle><circle cx="415" cy="63" r="4"></circle><circle cx="462" cy="209" r="3"></circle><circle cx="346" cy="53" r="2"></circle><circle cx="466" cy="92" r="3"></circle></g></svg><div class="artcaption">紅葉の季節 · 楓葉、山嵐與旅行好心情</div></div></div><span class="snow a"></span><span class="snow b"></span><span class="snow c"></span></section>
 <section class="section" id="flights"><div class="wrap"><div class="secthead"><div><span class="smalltag">01 / FLIGHT DETAILS</span><h2>飛行資訊 ✈</h2></div><span class="sub">中華航空 · 桃園 ⇄ 關西</span></div><div class="cards2"><article class="card flight"><div class="air">去程｜11/24（二）· CI156</div><div class="route">TPE → KIX</div><div class="time">08:05 — 11:35</div><div class="note">桃園國際機場 T2 → 關西國際機場 T1</div></article><article class="card flight"><div class="air">回程｜11/29（日）· CI173</div><div class="route">KIX → TPE</div><div class="time">19:00 — 21:25</div><div class="note">關西國際機場 T1 → 桃園國際機場 T2</div></article></div><div class="tipstrip">🧳 行程資料 提醒：護照、行動電源／含電池物品隨身攜帶、托運行李每人 23 公斤（以實際機票規定為準）。11/24 桃園機場送機 05:20；11/29 桃園機場接機已安排，預計落地後約 90 分鐘會合（約 22:55，實際依通關、領行李與接送聯絡為準）。</div><div class="pickup-banner" aria-label="台灣機場接送資訊"><strong>🚐 台灣機場接送已安排，大家安心搭機</strong><div class="pickup-pair"><span>🛫 11/24（二）去程送機<br><b>05:20｜桃園機場送機</b></span><span>🛬 11/29（日）回程接機<br><b>21:25 抵達桃園第二航廈</b><br>預計落地後約 90 分鐘會合（約 22:55）</span></div><small>接機會合時間依入境、領行李與當天接送聯絡調整；不必擔心回國後自行找車。</small></div></div></section>
@@ -91,6 +110,53 @@ nav a.active, nav a[aria-current="location"]{background:#405b43!important;color:
 🔌 三孔轉兩孔插頭只轉換形狀、不會變壓；熱水壺確認標示支援日本 <strong>100V</strong>。<br>
 💊 藥品以個人實際需要準備，保留原包裝，處方藥依日本入境規定處理。<br>
 ♻️ 飯店提供吹風機，無須另帶；訂房確認、嵐山小火車電子票及機場交通安排已統一處理，不必重複準備。</div><div class="tools"><button class="btn secondary" id="luggagereset">取消全部行李勾選</button><button class="btn secondary" id="luggageprint">列印行李清單</button></div><p class="mini">行李清單與旅行待辦分開儲存，重新開啟同一瀏覽器仍會保留。若用不同裝置開啟則不會自動同步。</p></div></section>
+<section class="section" id="shopping" style="background:#f8f0e6"><div class="wrap">
+<div class="secthead"><div><span class="smalltag">購物清單</span><h2>🛍️ 購物清單</h2></div><span class="sub" id="shoppingprogress" aria-live="polite">完成 0 / 6 項</span></div>
+<p class="sub">在日本找到商品後勾選即可；不需要輸入購買數量。照片是方便辨識的包裝參考，實際包裝可能更新。</p>
+<div class="shopping-areas">
+<div class="shopping-area"><h3>🍲 茅乃舍</h3><div class="shopping-items">
+<label class="shopping-item">
+<input type="checkbox" data-shopping-id="product-1" aria-label="已購買：減鹽茅乃舍高湯包"/>
+<img src="https://img06.weeecdn.com/item/image/367/582/74327EC5D6EDA22C.jpeg" alt="減鹽茅乃舍高湯包參考包裝照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<span class="shopping-photo-fallback" aria-hidden="true">參考照片<br>無法載入<br>請依日文名稱辨認</span>
+<span class="shopping-copy"><strong class="shopping-name">減鹽茅乃舍高湯包</strong><span class="shopping-jp">減塩 茅乃舎だし</span><span class="shopping-note">想找 5 入小包</span></span>
+</label>
+<label class="shopping-item">
+<input type="checkbox" data-shopping-id="product-2" aria-label="已購買：雞高湯包"/>
+<img src="https://shopping.c.yimg.jp/lib/macaron0120/a-iq-438-1.jpg" alt="雞高湯包參考包裝照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<span class="shopping-photo-fallback" aria-hidden="true">參考照片<br>無法載入<br>請依日文名稱辨認</span>
+<span class="shopping-copy"><strong class="shopping-name">雞高湯包</strong><span class="shopping-jp">鶏だし</span><span class="shopping-note">想找 5 入小包</span></span>
+</label>
+</div></div>
+<div class="shopping-area"><h3>💊 藥妝店</h3><div class="shopping-items">
+<label class="shopping-item">
+<input type="checkbox" data-shopping-id="product-3" aria-label="已購買：太田胃散〈分包〉S"/>
+<img src="https://www.kyorindo-onlineshop.jp/img/goods/S/4987033000251.jpg" alt="太田胃散〈分包〉S參考包裝照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<span class="shopping-photo-fallback" aria-hidden="true">參考照片<br>無法載入<br>請依日文名稱辨認</span>
+<span class="shopping-copy"><strong class="shopping-name">太田胃散〈分包〉S</strong><span class="shopping-jp">太田胃散〈分包〉S</span><span class="shopping-note">獨立分包粉末裝</span></span>
+</label>
+<label class="shopping-item">
+<input type="checkbox" data-shopping-id="product-4" aria-label="已購買：大正感冒藥｜粒裝"/>
+<img src="https://shopping.jreast.co.jp/html/upload/save_image/shop/17450/product/common/1024105851_68fadd5bc5ab0.jpg" alt="大正感冒藥｜粒裝參考包裝照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<span class="shopping-photo-fallback" aria-hidden="true">參考照片<br>無法載入<br>請依日文名稱辨認</span>
+<span class="shopping-copy"><strong class="shopping-name">大正感冒藥｜粒裝</strong><span class="shopping-jp">パブロンゴールドA〈錠〉</span><span class="shopping-note">圖片為常見系列參考包裝，現場確認</span></span>
+</label>
+<label class="shopping-item">
+<input type="checkbox" data-shopping-id="product-5" aria-label="已購買：大正感冒藥｜粉裝 44 包"/>
+<img src="https://tshop.r10s.jp/wellhealth-drugstore/cabinet/imgrc0072421961.jpg?fitin=720%3A720" alt="大正感冒藥｜粉裝 44 包參考包裝照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<span class="shopping-photo-fallback" aria-hidden="true">參考照片<br>無法載入<br>請依日文名稱辨認</span>
+<span class="shopping-copy"><strong class="shopping-name">大正感冒藥｜粉裝 44 包</strong><span class="shopping-jp">パブロンゴールドA〈微粒〉</span><span class="shopping-note">認明「微粒 44包」</span></span>
+</label>
+<label class="shopping-item">
+<input type="checkbox" data-shopping-id="product-6" aria-label="已購買：アセムヒEX｜濕疹藥"/>
+<img src="https://tomods-ap.com/img/goods/D1/4987426002619d.jpg" alt="アセムヒEX｜濕疹藥參考包裝照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+<span class="shopping-photo-fallback" aria-hidden="true">參考照片<br>無法載入<br>請依日文名稱辨認</span>
+<span class="shopping-copy"><strong class="shopping-name">アセムヒEX｜濕疹藥</strong><span class="shopping-jp">アセムヒEX</span><span class="shopping-note">外用乳膏，依藥師及包裝指示使用</span></span>
+</label>
+</div></div>
+</div><p class="shopping-help">✔️ 勾選紀錄會儲存在這個瀏覽器中，重新開啟也會保留。照片需網路連線；圖片僅供認識包裝。</p>
+<p class="shopping-help">💊 藥品購買時，請依藥師建議與個人狀況確認適用性，並留意攜帶入境台灣的相關規定。</p>
+</div></section>
 <section class="section" id="hotels"><div class="wrap"><div class="secthead"><div><span class="smalltag">06 / WHERE TO STAY</span><h2>兩座城市，兩個落腳處</h2></div></div><div class="cards2"><article class="card"><span class="staydates">KYOTO · 11/24–11/26</span><div class="stayname">京站八條口 VIA INN PRIME</div><div class="mini">VIA INN PRIME KYOTOEKI HACHIJOGUCHI — JR WEST GROUP</div><div class="stayloc">京都站附近 · 44-1 Higashikujo Kamitonodacho, Minami-ku, Kyoto</div><div class="hotel-address-card"><div class="hotel-address-label">📍 京都飯店｜地址卡</div><div class="hotel-address-text">44-1 Higashikujo Kamitonodacho, Minami-ku, Kyoto</div><button type="button" class="hotel-copy" data-copy-address="44-1 Higashikujo Kamitonodacho, Minami-ku, Kyoto">複製飯店地址</button></div><div class="feature"><span>🍵 京都車站周邊，往返景點方便</span><span>🥐 京都飯店早餐時間：<strong>早上 06:30～10:00（最後入場 09:30）</strong>；早餐供應依訂房內容確認</span><span>🛏️ 三人一間房</span></div><a class="locationlink" href="https://www.google.com/maps/search/?api=1&amp;query=VIA+INN+PRIME+KYOTOEKI+HACHIJOGUCHI" rel="noopener noreferrer" target="_blank">查看飯店地圖 ↗</a></article><article class="card"><span class="staydates">OSAKA · 11/26–11/29</span><div class="stayname">大阪心齋橋橋樑酒店</div><div class="mini">The Bridge Hotel Shinsaibashi</div><div class="stayloc">心齋橋站步行約 3 分鐘 · 1-10-24 Nishi Shinsaibashi, Osaka</div><div class="hotel-address-card"><div class="hotel-address-label">📍 大阪飯店｜地址卡</div><div class="hotel-address-text">1-10-24 Nishi Shinsaibashi, Osaka</div><button type="button" class="hotel-copy" data-copy-address="1-10-24 Nishi Shinsaibashi, Osaka">複製飯店地址</button></div><div class="feature"><span>🍳 訂單確認：3 份早餐（11/26–11/29，共 3 晚）；早餐用餐時間 07:00～10:00</span><span>🍺 免費酒類：官網不同頁面分別標示 11:00～21:30、15:00～21:30；啤酒、威士忌、紅酒、日本酒與雞尾酒等，實際開始時間請入住時向櫃檯確認。</span><span>🥤 非酒精飲料｜24 小時提供（依飯店公告）</span><span>🍦 免費冰淇淋｜文化體驗頁標示 11:00～20:00（1 樓餐廳）；其他服務頁資訊不同，請以現場公告為準。</span><span>🍜 每天 20:30–21:30｜免費日替自製拉麵宵夜</span><span>🛏️ 訂單確認：三人房，3 張單人床（訂單顯示 2 張＋1 張）</span></div><div class="hotel-events"><strong>📅 住宿期間的飯店免費體驗活動｜17:00–18:00</strong><div class="hotel-event"><b>11/26（四）</b><span>🎨 手作體驗（早餐會場）</span></div><div class="hotel-event"><b>11/27（五）</b><span>🎨 手作體驗（早餐會場）</span></div><div class="hotel-event"><b>11/28（六）</b><span>🐙 美食文化體驗：章魚燒、鯛魚燒、季節點心等（早餐會場）</span></div><p class="mini" style="margin:8px 0 0">以上是可自由參加的飯店活動，不影響原本每日行程；11/29（日）17:00 有和服體驗，但當天已退房並前往機場。活動內容、供應時段以飯店當日公告為準。</p><a class="locationlink" href="https://bridge-h.co.jp/tc/experience/" target="_blank" rel="noopener noreferrer">查詢飯店官方活動表 ↗</a></div><a class="locationlink" href="https://www.google.com/maps/search/?api=1&amp;query=The+Bridge+Hotel+Shinsaibashi" rel="noopener noreferrer" target="_blank">查看飯店地圖 ↗</a></article></div><div class="notice">大阪住宿日期、房型與早餐份數已依最新訂單截圖更新；餐飲服務與供應時段仍以飯店當日公告為準。11/26 京都退房時於飯店櫃檯交寄行李，由快遞送往大阪飯店；護照、現金與貴重物品隨身攜帶。交件時確認送達時間。</div></div></section>
 </main><section class="section" id="travelhelp" style="background:#f0f3ed"><div class="wrap"><div class="secthead"><div><span class="smalltag">07 / TRAVEL NOTES</span><h2>轉乘・搭車提醒・日落筆記</h2></div></div><div class="cards2"><article class="card"><h3>🚆 交通與轉乘提醒</h3><p>行程保留車站、路線、候車與步行時間，方便安排轉乘；每日行程另有「交通費預估（每人）」可展開估算，已由同行者支付的三段交通不計入。</p><div class="notice">🚌 京都市營巴士一般為<strong>後門上車、前門下車，下車時於前門付費</strong>。部分路線或其他業者可能不同，請以現場車門標示與司機指示為準。</div><div class="notice">勝尾寺巴士指定區間採無現金支付，請事先確認 ICOCA 餘額與現場搭乘方式。</div></article><article class="card"><h3>🌇 日落時間（日本時間）</h3><div id="sunsets"></div><p class="mini">大阪日落以日本國立天文台大阪觀測計算表為準。京都時間略有差異，前兩天顯示近似值供參考。</p><div class="notice">11/27 改去阿倍野 HARUKAS 300 展望台看大阪夜景；若勝尾寺或湯咖哩用餐延後，可縮短梅田自由逛街時間。</div></article></div><p class="mini">資料來源：<a href="https://eco.mtk.nao.ac.jp/koyomi/dni/2026/s2811.html" rel="noopener" target="_blank">日本國立天文台日落表</a> · <a href="https://www.hankyubus.co.jp/news/2026101.html" rel="noopener" target="_blank">阪急巴士搭乘與支付公告</a> · <a href="https://www.sagano-kanko.co.jp/en/" rel="noopener" target="_blank">嵯峨野觀光小火車</a>。</p></div></section>
 <section class="section" id="taxrefund"><div class="wrap"><div class="secthead"><div><span class="smalltag">08 / TAX REFUND · 2026</span><h2>日本 11 月退稅新制 💳</h2><p class="sub">2026 年 11 月 1 日起適用，11/24–11/29 旅程期間適用。</p></div></div><div class="cards2"><article class="card"><h3>🛍 購物時｜先付含稅價</h3><p>在參與免稅制度的商店購物，出示本人護照、依店家指示登記資料並先支付含稅金額；符合資格者同店同日購物<strong>未稅合計 ¥5,000 以上</strong>可申請。</p><p class="mini">退稅不是結帳時直接折抵；實際退款管道、手續費與到帳時間依商店及服務商規定。</p></article><article class="card"><h3>✈️ 11/29 回國｜先查驗再託運</h3><p>到關西機場後，<strong>在托運購物商品之前</strong>依海關指示完成免稅品出境確認（可能須使用自助機或接受實物檢查），之後由商店或退款業者依規定處理退稅。</p><p class="mini">免稅品、護照與購買紀錄需能配合查驗。建議比平常更早到機場，切勿將需查驗的物品先托運。</p></article></div><div class="card" style="margin-top:16px"><h3>退稅操作小卡</h3><ol><li>購買時確認店家有「Tax Free」服務，攜帶本人護照。</li><li>選購需要帶出日本的商品；免稅食品、化妝品即使沒有特殊封袋，仍不可在日本吃掉或用掉後申請該商品退稅。</li><li>結帳先付含稅價，完成店家要求的退款資訊登記，保留憑證。</li><li>11/29 在關西機場先確認退稅查驗程序，再托運行李，通過海關確認後依業者規定收款。</li></ol><p class="mini">官方資料：<a href="https://www.customs.go.jp/kaigairyoko/taxrefund.htm" rel="noopener" target="_blank">日本海關</a>、<a href="https://www.japan.travel/tw/plan/japans-tax-exemption/" rel="noopener" target="_blank">JNTO 繁體中文說明</a>。現場流程以關西機場及各退稅業者最新公告為準。</p></div></div></section>
@@ -337,4 +403,27 @@ drawTabs();drawDay();drawTodo();setupNavActive();tick();setInterval(tick,1000);l
  amount.addEventListener('input',calculate);rate.addEventListener('input',()=>{try{localStorage.setItem('kansai2026-user-yenrate',rate.value)}catch(e){}calculate()});
 })();
 </script>
-<script>(function(){document.addEventListener('click',async function(e){const btn=e.target.closest('[data-copy-address]');if(!btn)return;const val=btn.getAttribute('data-copy-address');try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(val);}else{const t=document.createElement('textarea');t.value=val;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}const old=btn.textContent;btn.textContent='✓ 已複製地址';setTimeout(()=>btn.textContent=old,1800);}catch(err){btn.textContent='請長按上方地址複製';}});})();</script></body></html>
+<script>(function(){document.addEventListener('click',async function(e){const btn=e.target.closest('[data-copy-address]');if(!btn)return;const val=btn.getAttribute('data-copy-address');try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(val);}else{const t=document.createElement('textarea');t.value=val;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}const old=btn.textContent;btn.textContent='✓ 已複製地址';setTimeout(()=>btn.textContent=old,1800);}catch(err){btn.textContent='請長按上方地址複製';}});})();</script>
+<script>
+(function(){
+  const key='kansai2026-shopping-checks-v1';
+  const boxes=Array.from(document.querySelectorAll('#shopping input[data-shopping-id]'));
+  const progress=document.getElementById('shoppingprogress');
+  let saved={};
+  try { saved=JSON.parse(localStorage.getItem(key))||{}; }catch(e){saved={};}
+  function refresh(){
+    const count=boxes.filter(b=>b.checked).length;
+    if(progress)progress.textContent='完成 '+count+' / '+boxes.length+' 項';
+  }
+  boxes.forEach(box=>{
+    box.checked=Boolean(saved[box.dataset.shoppingId]);
+    box.addEventListener('change',()=>{
+      saved[box.dataset.shoppingId]=box.checked;
+      try{localStorage.setItem(key,JSON.stringify(saved));}catch(e){}
+      refresh();
+    });
+  });
+  refresh();
+})();
+</script>
+</body></html>
